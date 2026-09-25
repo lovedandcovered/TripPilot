@@ -230,3 +230,34 @@ footer .wordmark{color:var(--nav-ink); flex-shrink: 0; white-space: nowrap;displ
         opacity: 1;
     }
 }
+
+/* Mobile footer logo fix */
+@media (max-width: 520px) {
+    footer .wordmark {
+        width: auto;
+        min-width: max-content;
+        height: auto;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        padding: 9px 14px;
+
+        background: var(--nav-ink);
+        color: #fff;
+
+        border-radius: 100px;
+
+        white-space: nowrap;
+        overflow: visible;
+    }
+
+    footer .wordmark .mark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+}
