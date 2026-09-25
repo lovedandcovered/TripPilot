@@ -29,17 +29,30 @@
                     flights and hotels, compares them against your budget, and hands you
                     a complete itinerary to approve.
                 </p>
-                <form class="searchbar" onsubmit="return false;">
+                <form class="searchbar" id="trip-form">
                     <div class="field">
-                        <label for="destination">Destination</label>
-                        <input id="destination" type="text" placeholder="Lagos, Bali, Nairobi">
+                        <label for="trip-request">Tell us your trip</label>
+                        <input
+                            id="trip-request"
+                            type="text"
+                            placeholder="e.g. Lagos to London, Oct 15–20, minimal stops"
+                            required
+                        >
                     </div>
+
                     <div class="field">
-                        <label for="budget">Max budget</label>
-                        <input id="budget" type="text" placeholder="e.g $1200">
+                        <label for="budget">Budget (optional)</label>
+                        <input
+                            id="budget"
+                            type="text"
+                            placeholder="e.g. $1200"
+                        >
                     </div>
-                    <button class="search-btn" type="submit">Plan My Trip</button>
-                    </form>
+
+                    <button class="search-btn" type="submit">
+                        Plan My Trip
+                    </button>
+                </form>
             </div>
         </section>
 
