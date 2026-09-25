@@ -30,7 +30,7 @@ body{
 h1,h2,h3, .wordmark{font-family: 'Space Grotesk',system-ui,sans-serif;}
 a{color: inherit}
 img{max-width: 100%;}
-.wrap{max-width: 1120px;margin:0 auto;padding:0 24px}
+.wrap{max-width: 1120px;margin:0 auto;padding: 0 24px}
 /* nav */
 header.nav{
     position: sticky;top: 0;
@@ -53,7 +53,7 @@ header.nav{
 .nav-cta{
     font-family: 'inter',sans-serif;font-weight: 600;font-size: 0.88rem;
     background: var(--nav-ink);color: #fff;border:none;
-    padding:11px 2opx;border-radius: 100px;cursor:pointer;
+    padding: 11px 20px;border-radius: 100px;cursor:pointer;
     text-decoration: none;white-space: nowrap;
     transition:opacity .2s ease;
 }
@@ -66,7 +66,7 @@ header.nav{
     transition: transform .2s ease;
 }
 .nav-cta:hover{opacity: 0.85;}
-@media(max-width:760px){ .nav-links{display:none}}
+@media(max-width: 760px){ .nav-links{display:none}}
  /*HERO*/
  .hero{padding: 76px 0 0;text-align: center}
  .hero-inner{max-width: 760px;margin:0 auto;}
