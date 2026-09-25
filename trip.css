@@ -1,27 +1,27 @@
 :root{
-    --bg:#0D1321;
-    --panel:#161F35;
-    --panel-2:#1D2A46;
-    --ink:#F2F0E9;
-    --ink-dim:#A9B0C3;
+    --bg: #0D1321;
+    --panel: #161F35;
+    --panel-2: #1D2A46;
+    --ink: #F2F0E9;
+    --ink-dim:  #A9B0C3;
     --amber:#FFB627;
-    --sky:#5CC8FF;
-    --line:rgba(242,240,233,0.14);
-    --nav-bg:#FFFFFF;
-    --nav-ink:#12172B;
-    --nav-dim:#5B6072;
-    --field-bg:#FFFFFF;
-    --field-line:#e4e2dc;
+    --sky: #5CC8FF;
+    --line: rgba(242,240,233,0.14);
+    --nav-bg: #FFFFFF;
+    --nav-ink: #12172B;
+    --nav-dim: #5B6072;
+    --field-bg: #FFFFFF;
+    --field-line: #e4e2dc;
     box-sizing: border-box;
-    padding-top: env(safe-area-inset-top,0px);
-    padding-bottom:env(safe-area-inset-bottom,0px);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 *{box-sizing: inherit;margin: 0;padding:0}
 html{scroll-padding-top: env(safe-area-inset-bottom,0px);scroll-behavior:smooth}
 html,body{height: 100%;}
 body{
     background:#F7F6F3;
-    color:var(--nav-ink);
+    color: var(--nav-ink);
     font-family: 'inter',system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.55;
     -webkit-font-smoothing:antialiased;
@@ -35,7 +35,7 @@ img{max-width: 100%;}
 header.nav{
     position: sticky;top: 0;
     z-index: 10;
-    background:var(--nav-bg);
+    background: var(--nav-bg);
     border-bottom: 1px solid var(--field-line);
 }
 .nav-inner{display: flex;align-items: center;justify-content: space-between;padding: 16px 24px; gap:16px;max-width: 100%;}
@@ -101,34 +101,34 @@ header.nav{
     text-align: left;
     padding: 10px 16px;
     border-radius: 14px;
-    border:1px solid var(--field-line);
+    border: 1px solid var(--field-line);
  }
  .field label{
     display: block;font-size: 0.68rem;font-weight: 600;letter-spacing: 0.04em;
-    color:var(--nav-ink);width:100%;background: transparent;
+    color: var(--nav-ink);width:100%;background: transparent;
 }
 .field input::placeholder{color:#A7ABB8}
 .search-btn{
     font-family: 'inter',sans-serif;font-weight: 600; font-size: 0.98rem;
-    background:var(--amber);color:#1a1206;border:none;
-    border-radius:14px;padding:0 26px;cursor:pointer;
-    display:flex;align-items: center;justify-content: center;gap:8px;
-    transition:transform .18s ease;
+    background: var(--amber);color:#1a1206;border:none;
+    border-radius: 14px;padding: 0 26px;cursor: pointer;
+    display:flex;align-items: center;justify-content: center;gap: 8px;
+    transition: transform .18s ease;
 }
-.search-btn:hover{transform:translateY(-1px)}
-@media (max-width:620px){
+.search-btn: hover{transform:translateY(-1px)}
+@media (max-width: 620px){
     .searchbar{grid-template-columns: 1fr}
-    .search-btn{padding:14px 26px}
+    .search-btn{padding: 14px 26px}
 }
 /*PILLS*/
 .pills{
     display:flex;gap:12px;flex-wrap:wrap;justify-content:center;
-    padding:32px 0 72px;
+    padding: 32px 0 72px;
 }
 .pill{
     display: inline-flex;align-items: center;gap:8px;
     padding: 11px 20px;border-radius: 100px;
-    border:1.5px solid #C9C6BE;
+    border: 1.5px solid #C9C6BE;
     background: #fff;color:var(--nav-ink);
     font-size: 0.9rem;font-weight: 600;
     text-decoration: none;
@@ -289,4 +289,46 @@ footer .wordmark .mark {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+}
+/* Final desktop alignment fixes */
+
+/* Keep navbar content aligned with the page */
+.nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Remove browser's inner input box */
+.field input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+
+    margin: 4px 0 0;
+    padding: 0;
+
+    background: transparent;
+    color: var(--nav-ink);
+
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+
+    font: inherit;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.field input:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.field input::placeholder {
+    color: #A7ABB8;
+    opacity: 1;
 }
