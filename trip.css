@@ -196,3 +196,37 @@ footer .wordmark{color:var(--nav-ink); flex-shrink: 0; white-space: nowrap;displ
 }
 :focus-visible{outline:2px solid var(--amber);outline-offset: 3px}
 
+/* Mobile form fixes */
+@media (max-width: 620px) {
+    .field input {
+        display: block;
+        width: 100%;
+        min-width: 0;
+
+        margin: 4px 0 0;
+        padding: 0;
+
+        border: none;
+        outline: none;
+        box-shadow: none;
+
+        background: transparent;
+        color: var(--nav-ink);
+
+        font: inherit;
+
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+    .field input:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+
+    .field input::placeholder {
+        color: #A7ABB8;
+        opacity: 1;
+    }
+}
