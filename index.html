@@ -211,11 +211,186 @@
             }
 
             if (result.status === 'research_completed') {
-                tripResult.textContent =
-                    'Trip research complete! Recommendations are ready.';
+                const flights = result.research?.flights || [];
+                const hotels = result.research?.hotels || [];
 
-                return;
+                const flightExplanations =
+                    result.explanations?.flights || [];
+
+                const hotelExplanations =
+                    result.explanations?.hotels || [];
+
+                const formatMoney = (price, currency) => {
+                    if (price === null || price === undefined) {
+                        return 'Price unavailable';
             }
+
+            return `${currency || ''} ${price}`.trim();
+        };
+
+                const formatDuration = (minutes) => {
+                    if (!minutes && minutes !== 0) return '';
+
+                const hours = Math.floor(minutes / 60);
+                const remainingMinutes = minutes % 60;
+
+            return `${hours}h ${remainingMinutes}m`;
+        };
+
+                const flightCards = flights.slice(0, 3).map((flight, index) => {
+                const explanation =
+                    flightExplanations.find(
+                        (item) => item.rank === index + 1
+                    )?.reason || '';
+
+                const stopsText =
+                    flight.stops === 0
+                        ? 'Direct'
+                        : `${flight.stops} stop${flight.stops === 1 ? '' : 's'}`;
+
+            return `
+                <article class="result-card">
+                    <div class="result-card-top">
+                        <span class="result-icon">✈️</span>
+                        <span class="result-label">Flight ${index + 1}</span>
+                    </div>
+
+                    <h3>${flight.airline || 'Flight option'}</h3>
+
+                    <p class="result-route">
+                        ${flight.origin || ''}
+                        →
+                        ${flight.destination || ''}
+                    </p>
+
+                    <div class="result-details">
+                        <span>
+                            <strong>${formatMoney(
+                                flight.price,
+                                flight.currency
+                            )}</strong>
+                        </span>
+
+                        <span>${stopsText}</span>
+
+                        <span>
+                            ${formatDuration(flight.durationMinutes)}
+                        </span>
+                    </div>
+
+                    <p class="result-time">
+                        ${flight.departureDate || ''}
+                        ${flight.departureTime || ''}
+                        →
+                        ${flight.arrivalTime || ''}
+                    </p>
+
+                    ${
+                        explanation
+                            ? `<p class="result-reason">${explanation}</p>`
+                            : ''
+                    }
+
+                    <p class="result-source">
+                        Source: ${flight.source || 'Travel provider'}
+                    </p>
+                </article>
+            `;
+        }).join('');
+
+        const hotelCards = hotels.slice(0, 3).map((hotel, index) => {
+            const explanation =
+                hotelExplanations.find(
+                    (item) => item.rank === index + 1
+                )?.reason || '';
+
+            return `
+                <article class="result-card">
+                    <div class="result-card-top">
+                        <span class="result-icon">🏨</span>
+                        <span class="result-label">Hotel ${index + 1}</span>
+                    </div>
+
+                    <h3>${hotel.name || 'Hotel option'}</h3>
+
+                    ${
+                        hotel.address
+                            ? `<p>${hotel.address}</p>`
+                            : ''
+                    }
+
+                    <div class="result-details">
+                        <span>
+                            <strong>${formatMoney(
+                                hotel.price,
+                                hotel.currency
+                            )}</strong>
+                        </span>
+
+                        ${
+                            hotel.reviewScore
+                                ? `<span>⭐ ${hotel.reviewScore}</span>`
+                                : ''
+                        }
+
+                        ${
+                            hotel.reviewCount
+                                ? `<span>${hotel.reviewCount} reviews</span>`
+                                : ''
+                        }
+                    </div>
+
+                    ${
+                        explanation
+                            ? `<p class="result-reason">${explanation}</p>`
+                            : ''
+                     }
+
+                    <p class="result-source">
+                        Source: ${hotel.source || 'Booking.com'}
+                    </p>
+                </article>
+            `;
+        }).join('');
+
+        tripResult.innerHTML = `
+            <section class="trip-results">
+                <div class="results-heading">
+                    <span>TripPilot research complete</span>
+                    <h2>Your recommendations</h2>
+                </div>
+
+                <div class="result-section">
+                    <h2>✈️ Recommended flights</h2>
+
+                    <div class="result-grid">
+                        ${
+                            flightCards ||
+                            '<p>No flight options were returned.</p>'
+                        }
+                    </div>
+                </div>
+
+                <div class="result-section">
+                    <h2>🏨 Recommended hotels</h2>
+
+                    <div class="result-grid">
+                        ${
+                            hotelCards ||
+                            '<p>No hotel options were returned.</p>'
+                        }
+                    </div>
+                </div>
+            </section>
+        `;
+
+        tripResult.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+
+        return;
+    }
 
             tripResult.textContent =
                 result.message || 'TripPilot returned a result.';
