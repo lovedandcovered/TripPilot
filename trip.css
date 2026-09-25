@@ -266,16 +266,19 @@ h1.headline {
 }
 
 .field {
+    min-width: 0;
     padding: 10px 16px;
 
     text-align: left;
 
+    background: #fff;
     border: 1px solid var(--field-line);
     border-radius: 14px;
 }
 
 .field label {
     display: block;
+    margin-bottom: 4px;
 
     color: var(--nav-ink);
 
@@ -285,21 +288,38 @@ h1.headline {
 }
 
 .field input {
+    display: block;
     width: 100%;
-    margin-top: 4px;
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
 
     background: transparent;
-    border: none;
-    outline: none;
-
     color: var(--nav-ink);
-    font: inherit;
+
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.field input:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 .field input::placeholder {
     color: #A7ABB8;
+    opacity: 1;
 }
-
 .search-btn {
     padding: 0 26px;
 
