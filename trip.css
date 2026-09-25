@@ -47,22 +47,36 @@ h1,
 h2,
 h3,
 .wordmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: auto;
+    min-width: max-content;
+    height: auto;
+
+    background: var(--nav-ink);
+    color: #fff;
+
+    padding: 9px 16px;
+    border-radius: 100px;
+
     font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+
+    white-space: nowrap;
+    flex-shrink: 0;
+    overflow: visible;
 }
 
-a {
-    color: inherit;
-}
-
-img {
-    max-width: 100%;
-}
-
-.wrap {
-    width: 100%;
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 24px;
+.wordmark .mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 
@@ -497,12 +511,18 @@ footer {
 }
 
 footer .wordmark {
+    display: inline-flex;
     width: auto;
+    min-width: max-content;
     height: auto;
 
-    color: #fff;
-}
+    padding: 9px 16px;
 
+    background: var(--nav-ink);
+    color: #fff;
+
+    overflow: visible;
+}
 .footer-links {
     display: flex;
     flex-wrap: wrap;
